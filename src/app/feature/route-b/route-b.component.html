@@ -1,0 +1,20 @@
+<div class="container">
+    <button (click)="isGrid=true">Grid</button>
+    <button (click)="isGrid=false" style="margin-right: 5px;">List</button>
+    <!-- <h2>Content</h2> -->
+    <select [(ngModel)]="selectedOrder" (click)="sortPrices()">
+        <option>Price - Low to High</option>
+        <option>Price - High to Low</option>
+    </select>
+    <!-- <p>{{selectedOrder}}</p> -->
+</div>
+<div class="body" [ngClass]="{
+    'grid-view':isGrid,
+    'list-view':!isGrid
+}">
+    <div class="card" *ngFor="let price of productPriceShow">
+        <img src="../../../assets/images/product.jpg" alt="product image" width="250px" height="100px">
+        <strong>Price: </strong>
+        <span>{{price}}</span>
+    </div>
+</div>

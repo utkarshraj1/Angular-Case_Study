@@ -26,10 +26,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('App-Case-Study');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('App-Case-Study app is running!');
-  });
 });

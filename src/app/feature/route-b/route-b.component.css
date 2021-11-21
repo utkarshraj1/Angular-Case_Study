@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: end;
+}
+
+.dropdown {
+    margin-right: 5px;
+}
+
+.body {
+    margin-top: 20px;
+    display: grid;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+.card {
+    width: auto;
+    height: 222px;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.grid-view {
+    grid-template-columns: 280px 280px 280px 280px;
+}
+
+.list-view {
+    grid-template-columns: 280px 280px;
+}

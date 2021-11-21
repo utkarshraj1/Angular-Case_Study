@@ -1,0 +1,12 @@
+.outer {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.inner {
+    background-color: antiquewhite;
+    width: 50%;
+    margin: 10px;
+}

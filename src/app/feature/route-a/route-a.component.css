@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    /* background-color: aqua; */
+    align-items: center;
+    border: 3px solid black;
+}
+
+.dimension1 {
+    height: 400px;
+}
+
+.dimension2 {
+    height: 300px; 
+    width: 800px;
+}
+
+.dimension3 {
+    height: 250px; 
+    width: 750px;
+}
+
+.dimension4 {
+    height: 200px;
+    width: 700px;
+}
+
+.dimension5 {
+    height: 150px; 
+    width: 650px;
+}
+
+.dimension6 {
+    height: 100px; 
+    width: 600px;
+}
