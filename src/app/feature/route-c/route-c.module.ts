@@ -8,7 +8,7 @@ import { SiblingBComponent } from './sibling-b/sibling-b.component';
 import { SiblingCComponent } from './sibling-c/sibling-c.component';
 import { SiblingDComponent } from './sibling-d/sibling-d.component';
 
-
+console.log('Route C loaded');
 
 @NgModule({
   declarations: [

@@ -4,7 +4,7 @@ import { RouteFComponent } from './route-f.component';
 import { FormsModule } from '@angular/forms';
 import { RouteFRoutingModule } from './route-f-routing.module';
 
-
+console.log('Route F loaded');
 
 @NgModule({
   declarations: [

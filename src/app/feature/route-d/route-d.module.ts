@@ -8,7 +8,7 @@ import { BComponentComponent } from './b-component/b-component.component';
 import { CComponentComponent } from './c-component/c-component.component';
 import { DComponentComponent } from './d-component/d-component.component';
 
-
+console.log('Route D loaded');
 
 @NgModule({
   declarations: [
