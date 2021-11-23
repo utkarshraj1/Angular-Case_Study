@@ -1,19 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteAComponent } from './feature/route-a/route-a.component';
-import { RouteBComponent } from './feature/route-b/route-b.component';
-import { RouteCComponent } from './feature/route-c/route-c.component';
-import { RouteDComponent } from './feature/route-d/route-d.component';
-import { RouteEComponent } from './feature/route-e/route-e.component';
-import { RouteFComponent } from './feature/route-f/route-f.component';
 
 const routes: Routes = [
-  { path: 'route-a', component: RouteAComponent },
-  { path: 'route-b', component: RouteBComponent },
-  { path: 'route-c', component: RouteCComponent },
-  { path: 'route-d', component: RouteDComponent },
-  { path: 'route-e', component: RouteEComponent },
-  { path: 'route-f', component: RouteFComponent }
+  {
+    path: 'route-a',
+    loadChildren: () => import('../app/feature/route-a/route-a.module').then(m => m.RouteAModule)
+  },
+  {
+    path: 'route-b',
+    loadChildren: () => import('../app/feature/route-b/route-b.module').then(m => m.RouteBModule)
+  },
+  {
+    path: 'route-c',
+    loadChildren: () => import('../app/feature/route-c/route-c.module').then(m => m.RouteCModule)
+  },
+  {
+    path: 'route-d',
+    loadChildren: () => import('../app/feature/route-d/route-d.module').then(m => m.RouteDModule)
+  },
+  {
+    path: 'route-e',
+    loadChildren: () => import('../app/feature/route-e/route-e.module').then(m => m.RouteEModule)
+  },
+  {
+    path: 'route-f',
+    loadChildren: () => import('../app/feature/route-f/route-f.module').then(m => m.RouteFModule)
+  }
 ];
 
 @NgModule({
