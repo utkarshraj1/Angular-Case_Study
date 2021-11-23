@@ -26,6 +26,7 @@ export class SiblingAComponent implements OnInit {
 
     if (currentCount !== undefined || currentBtn !== undefined) {
       this.timerValue = currentCount;
+      if (this.timeInterval !== undefined) { this.timeInterval.unsubscribe(); }
       this.timer();
     }
   }

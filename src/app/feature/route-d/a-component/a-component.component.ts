@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, ObservableInput, skipWhile, Subscription, takeUntil } from 'rxjs';
+import { interval, ObservableInput, skipWhile, Subscription, take, takeUntil } from 'rxjs';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -12,7 +12,6 @@ export class AComponentComponent implements OnInit {
 
   timerValue: any;
   timeInterval!: Subscription;
-  newTimeInterval!: Subscription;
 
   constructor(private shared: SharedService) { }
 
@@ -26,13 +25,13 @@ export class AComponentComponent implements OnInit {
     this.shared.btnTrigger.subscribe((res) => {
       console.log('btnTrigger subscribed in a-component');
       this.btnTrigger = res;
+      if (this.timeInterval !== undefined) { this.timeInterval.unsubscribe(); }
       this.timer();
     })
   }
 
   timer(): void {
     this.timeInterval = interval(1000).subscribe((res: any) => {
-      // console.log(res);
       if (this.timerValue <= 0 || this.btnTrigger !== 'Start') {
         console.log('timer interval and stopped/resetted');
         this.cancelTimer();
@@ -48,7 +47,6 @@ export class AComponentComponent implements OnInit {
   cancelTimer(): void {
     console.log('Unsubscription Happening');
     this.timeInterval.unsubscribe();
-    // this.newTimeInterval.unsubscribe();
     if (this.btnTrigger === 'Reset') { this.timerValue = 0; }
   }
 
