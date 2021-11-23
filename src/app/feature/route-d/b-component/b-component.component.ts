@@ -1,7 +1,7 @@
 import {
-  Component, Input, OnInit, Output, EventEmitter,
-  SimpleChanges, ViewChild, ElementRef, Renderer2
+  Component, OnInit, ViewChild, ElementRef, Renderer2
 } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-b-component',
@@ -10,49 +10,40 @@ import {
 })
 export class BComponentComponent implements OnInit {
 
-  @Input() currentCounterStop: any;
-  @Output() buttonTriggered: EventEmitter<string> = new EventEmitter<string>();
-  @Output() countDown: EventEmitter<number> = new EventEmitter<number>();
   @ViewChild('pause') pauseEl!: ElementRef;
 
   timerValue: number;
   clickCount: number = 1;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private shared: SharedService) {
     this.timerValue = 0;
   }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const current = changes['currentCounterStop'].currentValue;
-
-    if (current !== undefined) {
-      this.timerValue = current;
-    }
+    this.shared.currentCountValue.subscribe((res) => {
+      console.log('current count subscribed in b component');
+      this.timerValue = res;
+    });
   }
 
   startAndStop(): void {
 
     if (this.clickCount === 1) {
-      this.countDown.emit(this.timerValue);
+      console.log('countdown value emitted in b component');
+      this.shared.countDownValue.next(this.timerValue);
     }
 
     if (this.clickCount % 2 === 0) {
-      // console.log(`Stop ${this.clickCount}`);
-      // Stop
       const message = `Paused at ${this.timerValue}`;
       this.appendElement(message);
 
-      this.buttonTriggered.emit('Stop');
+      console.log('btnTrigger value Stop emitted in b component');
+      this.shared.btnTrigger.next('Stop');
 
     }
     else if (this.clickCount % 2 !== 0) {
-      // console.log(`Start ${this.clickCount}`);
-      // Start
-      this.countDown.emit(this.timerValue);
-      this.buttonTriggered.emit('Start');
+      console.log('btnTrigger value Start emitted in b component');
+      this.shared.btnTrigger.next('Start');
     }
     this.clickCount++;
   }
@@ -60,8 +51,12 @@ export class BComponentComponent implements OnInit {
   reset() {
     this.clickCount = 1;
     this.timerValue = 0;
-    this.buttonTriggered.emit('Reset');
-    this.countDown.emit(0);
+    this.shared.btnTrigger.next('Reset');
+
+    const div = document.getElementById('pause');
+    while (div?.firstChild) {
+      div.removeChild(div.firstChild);
+    }
   }
 
   appendElement(message: string) {
@@ -72,6 +67,5 @@ export class BComponentComponent implements OnInit {
     this.renderer.appendChild(this.pauseEl.nativeElement, strong);
     this.renderer.appendChild(this.pauseEl.nativeElement, br);
   }
-
 
 }

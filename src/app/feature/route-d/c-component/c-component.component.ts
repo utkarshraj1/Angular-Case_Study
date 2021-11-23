@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -9,21 +9,17 @@ import { SharedService } from 'src/app/services/shared.service';
 export class CComponentComponent implements OnInit {
 
   @ViewChild('timestamp', { static: false }) timestamp!: ElementRef
-  @Input() buttonTrigger!: string;
+  buttonTrigger!: string;
 
   constructor(private renderer: Renderer2,
     private element: ElementRef,
     private shared: SharedService) { }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(change: SimpleChanges) {
-    console.log(change['buttonTrigger'].currentValue);
-
-    if (change['buttonTrigger'].currentValue !== undefined) {
-      this.appendElement(change['buttonTrigger'].currentValue);
-    }
+    this.shared.btnTrigger.subscribe((res) => {
+      this.buttonTrigger = res;
+      this.appendElement(this.buttonTrigger);
+    });
   }
 
   appendElement(btnTrigger: string): void {

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { interval, timer } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { interval, ObservableInput, skipWhile, Subscription, takeUntil } from 'rxjs';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-a-component',
@@ -7,44 +8,52 @@ import { interval, timer } from 'rxjs';
   styleUrls: ['./a-component.component.css']
 })
 export class AComponentComponent implements OnInit {
-  @Input() countDown!: number;
-  @Input() btnTrigger!: string;
-  @Output() currentTimedValue: EventEmitter<number> = new EventEmitter();
+  btnTrigger!: string;
 
   timerValue: any;
-  timeInterval: any;
+  timeInterval!: Subscription;
+  newTimeInterval!: Subscription;
 
-  constructor() { }
+  constructor(private shared: SharedService) { }
 
   ngOnInit(): void {
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const currentBtn = changes['btnTrigger'].currentValue;
-    const currentCount = changes['countDown'].currentValue;
+    this.shared.countDownValue.subscribe((res) => {
+      console.log('countDownValue subscribed in a-component');
+      this.timerValue = res;
+    });
 
-    if (currentCount !== undefined || currentBtn !== undefined) {
-      this.timerValue = currentCount;
+    this.shared.btnTrigger.subscribe((res) => {
+      console.log('btnTrigger subscribed in a-component');
+      this.btnTrigger = res;
       this.timer();
-    }
+    })
   }
 
   timer(): void {
-    // throw new Error(a'Method not implemented.');
     this.timeInterval = interval(1000).subscribe((res: any) => {
       // console.log(res);
       if (this.timerValue <= 0 || this.btnTrigger !== 'Start') {
+        console.log('timer interval and stopped/resetted');
         this.cancelTimer();
       }
       else {
         this.timerValue -= 1;
-        this.currentTimedValue.emit(this.timerValue);
+        console.log('timer is changing and value emitted');
+        this.shared.currentCountValue.next(this.timerValue);
       }
     });
   }
 
   cancelTimer(): void {
+    console.log('Unsubscription Happening');
     this.timeInterval.unsubscribe();
+    // this.newTimeInterval.unsubscribe();
     if (this.btnTrigger === 'Reset') { this.timerValue = 0; }
+  }
+
+  ngOnDestry() {
+    console.log('Unsubscription Happening');
+    this.timeInterval.unsubscribe();
   }
 }

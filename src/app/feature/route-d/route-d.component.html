@@ -1,16 +1,14 @@
 <div class="container">
     <div class="component border-class">
-        <app-a-component [countDown]="countDownValue" [btnTrigger]="buttonTrigger"
-            (currentTimedValue)="currentTimed($event)"></app-a-component>
+        <app-a-component></app-a-component>
     </div>
     <div class="component border-class">
-        <app-b-component [currentCounterStop]="currentTimerValue" (buttonTriggered)="buttonValue($event)"
-            (countDown)="countDown($event)"></app-b-component>
+        <app-b-component></app-b-component>
     </div>
     <div class="component">
-        <app-c-component [buttonTrigger]="buttonTrigger"></app-c-component>
+        <app-c-component></app-c-component>
     </div>
     <div class="component">
-        <app-d-component [btnTrigger]="buttonTrigger"></app-d-component>
+        <app-d-component></app-d-component>
     </div>
 </div>

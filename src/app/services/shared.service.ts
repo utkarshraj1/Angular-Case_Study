@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+
+  btnTrigger = new Subject<string>();
+  countDownValue = new Subject<any>();
+  currentCountValue = new Subject<any>();
 
   constructor() { }
 

@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-d-component',
@@ -7,25 +8,18 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class DComponentComponent implements OnInit {
 
-  @Input() btnTrigger!: string;
   start: number;
   pause: number;
 
-  constructor() {
+  constructor(private shared: SharedService) {
     this.start = 0;
     this.pause = 0;
   }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(change: SimpleChanges) {
-
-    console.log(change['btnTrigger'].currentValue);
-    const current = change['btnTrigger'].currentValue;
-    if (current !== undefined) {
-      this.incrementCount(current);
-    }
+    this.shared.btnTrigger.subscribe((res) => {
+      this.incrementCount(res);
+    });
   }
 
   incrementCount(trigger: string) {
@@ -34,7 +28,6 @@ export class DComponentComponent implements OnInit {
       this.pause = 0;
       return;
     }
-
     trigger === 'Start' ? this.start++ : this.pause++;
   }
 
