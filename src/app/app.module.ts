@@ -10,6 +10,14 @@ import { RouteCComponent } from './feature/route-c/route-c.component';
 import { RouteDComponent } from './feature/route-d/route-d.component';
 import { RouteEComponent } from './feature/route-e/route-e.component';
 import { RouteFComponent } from './feature/route-f/route-f.component';
+import { SiblingAComponent } from './feature/route-c/sibling-a/sibling-a.component';
+import { SiblingBComponent } from './feature/route-c/sibling-b/sibling-b.component';
+import { SiblingCComponent } from './feature/route-c/sibling-c/sibling-c.component';
+import { SiblingDComponent } from './feature/route-c/sibling-d/sibling-d.component';
+import { AComponentComponent } from './feature/route-d/a-component/a-component.component';
+import { BComponentComponent } from './feature/route-d/b-component/b-component.component';
+import { CComponentComponent } from './feature/route-d/c-component/c-component.component';
+import { DComponentComponent } from './feature/route-d/d-component/d-component.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +27,15 @@ import { RouteFComponent } from './feature/route-f/route-f.component';
     RouteCComponent,
     RouteDComponent,
     RouteEComponent,
-    RouteFComponent
+    RouteFComponent,
+    SiblingAComponent,
+    SiblingBComponent,
+    SiblingCComponent,
+    SiblingDComponent,
+    AComponentComponent,
+    BComponentComponent,
+    CComponentComponent,
+    DComponentComponent
   ],
   imports: [
     BrowserModule,

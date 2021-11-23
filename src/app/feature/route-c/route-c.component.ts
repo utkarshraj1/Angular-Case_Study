@@ -7,9 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteCComponent implements OnInit {
 
-  constructor() { }
+  countDownValue: number;
+  buttonTrigger!: string;
+  currentTimerValue!: number;
+
+  constructor() {
+    this.countDownValue = 0;
+  }
 
   ngOnInit(): void {
+  }
+
+  buttonValue(event: string): void {
+    this.buttonTrigger = event;
+    console.log(event);
+  }
+
+  countDown(event: number): void {
+    this.countDownValue = event;
+    console.log(event);
+  }
+
+  currentTimed(event: number): void {
+    this.currentTimerValue = event;
+    console.log(event);
   }
 
 }
