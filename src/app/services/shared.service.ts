@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { IStudent } from 'src/assets/model/student';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,9 @@ export class SharedService {
   countDownValue = new Subject<any>();
   currentCountValue = new Subject<any>();
 
-  constructor() { }
+  private marksUrl: string = '../../assets/config/marks.json';
+
+  constructor(private http: HttpClient) { }
 
   getTime(): string {
     let date = new Date();
@@ -21,5 +25,9 @@ export class SharedService {
     let suffix = date.getHours() >= 12 ? 'PM' : 'AM';
 
     return hr + ':' + min + ':' + sec + ' ' + suffix;
+  }
+
+  getData(): Observable<IStudent[]> {
+    return this.http.get<IStudent[]>(this.marksUrl);
   }
 }

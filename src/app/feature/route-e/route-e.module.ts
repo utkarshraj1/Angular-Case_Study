@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouteEComponent } from './route-e.component';
 import { FormsModule } from '@angular/forms';
 import { RouteERoutingModule } from './route-e-routing.module';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 console.log('Route E loaded');
 
@@ -13,7 +14,8 @@ console.log('Route E loaded');
   imports: [
     CommonModule,
     FormsModule,
-    RouteERoutingModule
+    RouteERoutingModule,
+    Ng2OrderModule
   ]
 })
 export class RouteEModule { }
