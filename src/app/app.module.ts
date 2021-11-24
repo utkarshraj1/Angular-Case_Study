@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 @NgModule({
@@ -15,9 +14,7 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    Ng2OrderModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/services/shared.service';
-import { IStudent } from 'src/assets/model/student';
 
 @Component({
   selector: 'app-route-e',
@@ -12,22 +11,22 @@ export class RouteEComponent implements OnInit {
 
   subscribeData!: Subscription;
   keys!: any[];
-  studentMarks: IStudent[] = [];
+  studentMarks: any[] = [];
   selectedKey: string = '';
   isDesc: boolean = true;
   clickCount: number = 0;
+  sortedStudentMarks!: any[];
 
   constructor(private shared: SharedService) { }
 
   ngOnInit(): void {
     this.subscribeData = this.shared.getData().subscribe((res) => {
       console.log('Subscription started');
-      // console.log(res);
-      this.studentMarks = res;
-
-      this.keys = Object.keys(this.studentMarks[0])
+      console.log(res);
+      this.studentMarks = JSON.parse(JSON.stringify(res));
+      this.sortedStudentMarks = this.studentMarks;
+      this.keys = Object.keys(this.studentMarks[0]);
       console.log(this.keys);
-      // console.log(this.studentMarks);
     });
   }
 
@@ -37,16 +36,33 @@ export class RouteEComponent implements OnInit {
   }
 
   sortUsing(key: string): void {
+    this.clickCount++;
     if (this.selectedKey !== key) {
       this.selectedKey = key;
     }
-    this.isDesc = !this.isDesc;
-    this.clickCount++;
-    console.log(this.clickCount);
-    // if (this.clickCount === 3 && this.selectedKey === key) {
-    //   this.selectedKey = '';
-    //   this.isDesc = true;
-    //   this.clickCount = 0;
-    // }
+
+    if (this.clickCount === 1) {
+      this.sortedStudentMarks = this.sortBy(this.studentMarks, key);
+    }
+    else if (this.clickCount === 2) {
+      this.sortedStudentMarks = this.reverseSortBy(this.studentMarks, key);
+    }
+    else if (this.clickCount === 3) {
+      this.sortedStudentMarks = this.studentMarks;
+      this.clickCount = 0;
+    }
+    console.log(this.sortedStudentMarks, this.studentMarks);
+  }
+
+  sortBy = function (arr: any, p: any) {
+    return arr.slice(0).sort(function (a: any, b: any) {
+      return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
+    });
+  }
+
+  reverseSortBy = function (arr: any, p: any) {
+    return arr.slice(0).sort(function (a: any, b: any) {
+      return (a[p] > b[p]) ? -1 : (a[p] < b[p]) ? 1 : 0;
+    });
   }
 }

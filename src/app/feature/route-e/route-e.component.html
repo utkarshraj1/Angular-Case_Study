@@ -1,11 +1,11 @@
-<div>
+<div class="container">
     <table>
         <thead>
             <th *ngFor="let key of keys">
                 <p (click)="sortUsing(key)">{{key}}</p>
             </th>
         </thead>
-        <tbody *ngFor="let value of studentMarks | orderBy: selectedKey:isDesc">
+        <tbody *ngFor="let value of sortedStudentMarks">
             <td>{{value.name}}</td>
             <td>{{value.class}}</td>
             <td>{{value.section}}</td>
