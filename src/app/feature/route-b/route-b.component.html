@@ -1,6 +1,8 @@
 <div class="container">
-    <button (click)="isGrid=true">Grid</button>
-    <button (click)="isGrid=false" style="margin-right: 5px;">List</button>
+    <button class="button" (click)="isGrid=true"
+        [ngStyle]="{'background-color': isGrid ? 'cornflowerblue' : 'white'}">Grid</button>
+    <button class="button" (click)="isGrid=false" style="margin-right: 5px;"
+        [ngStyle]="{'background-color': !isGrid ? 'cornflowerblue' : 'white'}">List</button>
     <!-- <h2>Content</h2> -->
     <select [(ngModel)]="selectedOrder" (click)="sortPrices()">
         <option>Price - Low to High</option>
@@ -14,6 +16,8 @@
 }">
     <div class="card" *ngFor="let price of productPriceShow">
         <img src="../../../assets/images/product.jpg" alt="product image" width="250px" height="100px">
+        <br>
+        <br>
         <strong>Price: </strong>
         <span>{{price}}</span>
     </div>
