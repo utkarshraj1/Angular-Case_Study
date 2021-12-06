@@ -25,6 +25,9 @@ const routes: Routes = [
   {
     path: 'route-f',
     loadChildren: () => import('../app/feature/route-f/route-f.module').then(m => m.RouteFModule)
+  },
+  {
+    path: '**', redirectTo: 'route-a', pathMatch: 'full'
   }
 ];
 
