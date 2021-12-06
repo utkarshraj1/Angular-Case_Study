@@ -18,9 +18,10 @@ export class RouteFComponent implements OnInit {
   @HostListener('window:scroll') scroll(): void {
 
     const div = this.renderer.createElement('div');
-    div.className = this.count.toString();
-
+    // div.className = this.count.toString();
+    this.renderer.addClass(div, this.count.toString());
     const button = this.renderer.createElement('button');
+    this.renderer.addClass(button, 'btn');
     const text = this.renderer.createText(`Button ${this.count}`);
     this.renderer.listen(button, 'click', () => {
       alert(`Button in Div ${div.className} is clicked!`);

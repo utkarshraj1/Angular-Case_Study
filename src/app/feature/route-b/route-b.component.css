@@ -1,6 +1,36 @@
 .container {
     display: flex;
     justify-content: end;
+    /* background: #000; */
+}
+.btn-box {
+    width: 200px;
+    display: flex;
+    margin-right: 20px;
+    position: relative;
+    border-radius: 30px;
+    background: #FFF;
+}
+
+.btn-toggle {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
+
+.btn {
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #D6DBDF;
+    border-radius: 30px;
+    transform: 0.3s;
 }
 
 .dropdown {
