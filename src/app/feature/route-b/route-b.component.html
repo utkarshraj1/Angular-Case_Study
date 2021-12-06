@@ -6,9 +6,11 @@
     <!-- <h2>Content</h2> -->
 
     <div class="btn-box">
-        <div class="btn" [ngStyle]="{'left.px': isGrid ? '0' : '100'}"></div>
-        <button type="button" class="btn-toggle" (click)="isGrid=true">Grid</button>
-        <button type="button" class="btn-toggle" (click)="isGrid=false">List</button>
+        <!-- <div class="btn" [ngStyle]="{'left.px': isGrid ? '0' : '100'}"></div> -->
+        <button style="border-radius: 30px 0px 0px 30px;" [class.clicked]="isGrid" class="btn-toggle"
+            (click)="isGrid=true">Grid</button>
+        <button style="border-radius: 0px 30px 30px 0px;" [class.clicked]="!isGrid" class="btn-toggle"
+            (click)="isGrid=false">List</button>
     </div>
 
     <select [(ngModel)]="selectedOrder" (change)="sortPrices()">
