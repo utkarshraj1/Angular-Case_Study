@@ -21,8 +21,8 @@ export class SiblingAComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const currentBtn = changes['btnTrigger'].currentValue;
-    const currentCount = changes['countDown'].currentValue;
+    const currentBtn = this.btnTrigger;
+    const currentCount = this.countDown;
 
     if (currentCount !== undefined || currentBtn !== undefined) {
       this.timerValue = currentCount;
@@ -37,6 +37,7 @@ export class SiblingAComponent implements OnInit {
       // console.log(res);
       if (this.timerValue <= 0 || this.btnTrigger !== 'Start') {
         console.log('timer interval and stopped/resetted');
+        // this.btnTrigger = '';
         this.cancelTimer();
       }
       else {
