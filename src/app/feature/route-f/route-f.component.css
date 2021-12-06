@@ -7,9 +7,22 @@
     padding: 0px;
 }
 
-div {
+.container > div {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
-    width: 40%;
+    width: 200px;
+    height: 200px;
+}
+
+.btn {
+    border: 0px;
+    padding: 20px;
+    background: #909497;
+    color: #FBFCFC;
+}
+
+.btn:hover {
+    background: #D7DBDD;
+    color: #1B2631;
 }

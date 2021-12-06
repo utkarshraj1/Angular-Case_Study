@@ -60,6 +60,12 @@ export class SiblingBComponent implements OnInit {
   reset() {
     this.clickCount = 1;
     this.timerValue = 0;
+
+    const div = document.getElementById('pause');
+    while (div?.firstChild) {
+      div.removeChild(div.firstChild);
+    }
+
     this.buttonTriggered.emit('Reset');
     this.countDown.emit(0);
   }

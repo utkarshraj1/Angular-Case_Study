@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Created by Utkarsh');
+  }
+
+  @HostListener('window:scroll') parentScroll(): void {
+    let header = document.querySelector('.nav-bar');
+    header?.classList.toggle('sticky-class', window.scrollY > 0);
   }
 }

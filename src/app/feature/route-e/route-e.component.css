@@ -1,8 +1,22 @@
-table, th, td {
-    border:1px solid black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap');
 
 .container {
     display: flex;
     justify-content: center;
+}
+
+.heading {
+    background-color: #CCD1D1;
+    font-family: 'ReadexPro', sans-serif;
+}
+
+.table, th, td {
+    border:1px solid black;
+    border-spacing: 0;
+}
+
+.th, td {
+    width: 6rem;
+    padding: 10px;
+    text-align: center;
 }
