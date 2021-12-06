@@ -21,17 +21,17 @@ export class RouteEComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeData = this.shared.getData().subscribe((res) => {
-      console.log('Subscription started');
-      console.log(res);
+      // console.log('Subscription started');
+      // console.log(res);
       this.studentMarks = JSON.parse(JSON.stringify(res));
       this.sortedStudentMarks = this.studentMarks;
       this.keys = Object.keys(this.studentMarks[0]);
-      console.log(this.keys);
+      // console.log(this.keys);
     });
   }
 
   ngOnDestroy(): void {
-    console.log('Unsubscription happening in OnDestroy');
+    // console.log('Unsubscription happening in OnDestroy');
     this.subscribeData.unsubscribe();
   }
 
@@ -51,7 +51,7 @@ export class RouteEComponent implements OnInit {
       this.sortedStudentMarks = this.studentMarks;
       this.clickCount = 0;
     }
-    console.log(this.sortedStudentMarks, this.studentMarks);
+    // console.log(this.sortedStudentMarks, this.studentMarks);
   }
 
   sortBy = function (arr: any, p: any) {

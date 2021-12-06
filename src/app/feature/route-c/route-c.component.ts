@@ -20,17 +20,17 @@ export class RouteCComponent implements OnInit {
 
   buttonValue(event: string): void {
     this.buttonTrigger = event;
-    console.log(event);
+    // console.log(event);
   }
 
   countDown(event: number): void {
     this.countDownValue = event;
-    console.log(event);
+    // console.log(event);
   }
 
   currentTimed(event: number): void {
     this.currentTimerValue = event;
-    console.log(event);
+    // console.log(event);
   }
 
 }

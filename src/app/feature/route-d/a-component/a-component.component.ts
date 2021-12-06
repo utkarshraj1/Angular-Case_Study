@@ -18,12 +18,12 @@ export class AComponentComponent implements OnInit {
   ngOnInit(): void {
 
     this.shared.countDownValue.subscribe((res) => {
-      console.log('countDownValue subscribed in a-component');
+      // console.log('countDownValue subscribed in a-component');
       this.timerValue = res;
     });
 
     this.shared.btnTrigger.subscribe((res) => {
-      console.log('btnTrigger subscribed in a-component');
+      // console.log('btnTrigger subscribed in a-component');
       this.btnTrigger = res;
       if (this.timeInterval !== undefined) { this.timeInterval.unsubscribe(); }
       this.timer();
@@ -33,25 +33,25 @@ export class AComponentComponent implements OnInit {
   timer(): void {
     this.timeInterval = interval(1000).subscribe((res: any) => {
       if (this.timerValue <= 0 || this.btnTrigger !== 'Start') {
-        console.log('timer interval and stopped/resetted');
+        // console.log('timer interval and stopped/resetted');
         this.cancelTimer();
       }
       else {
         this.timerValue -= 1;
-        console.log('timer is changing and value emitted');
+        // console.log('timer is changing and value emitted');
         this.shared.currentCountValue.next(this.timerValue);
       }
     });
   }
 
   cancelTimer(): void {
-    console.log('Unsubscription Happening');
+    // console.log('Unsubscription Happening');
     this.timeInterval.unsubscribe();
     if (this.btnTrigger === 'Reset') { this.timerValue = 0; }
   }
 
   ngOnDestry() {
-    console.log('Unsubscription Happening');
+    // console.log('Unsubscription Happening');
     this.timeInterval.unsubscribe();
   }
 }

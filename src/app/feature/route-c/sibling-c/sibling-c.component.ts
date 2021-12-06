@@ -19,7 +19,7 @@ export class SiblingCComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(change: SimpleChanges) {
-    console.log(change['buttonTrigger'].currentValue);
+    // console.log(change['buttonTrigger'].currentValue);
 
     if (change['buttonTrigger'].currentValue !== undefined) {
       this.appendElement(change['buttonTrigger'].currentValue);
@@ -35,7 +35,8 @@ export class SiblingCComponent implements OnInit, OnChanges {
     }
     else {
       const time = this.shared.getTime();
-      const message = btnTrigger === 'Start' ? `Started at ${new Date().toISOString().slice(0, -14)} ${time}` : `Paused at ${new Date().toISOString().slice(0, -14)} ${time}`;
+      const message = btnTrigger === 'Start' ? `Started at ${new Date().toISOString().slice(0, -14)} ${time}`
+        : `Paused at ${new Date().toISOString().slice(0, -14)} ${time}`;
 
       const strong = this.renderer.createElement('strong');
       const br = this.renderer.createElement('br');

@@ -21,14 +21,14 @@ export class SiblingDComponent implements OnInit, OnChanges {
 
   ngOnChanges(change: SimpleChanges) {
 
-    console.log(change['btnTrigger'].currentValue);
+    // console.log(change['btnTrigger'].currentValue);
     const current = change['btnTrigger'].currentValue;
     if (current !== undefined) {
       this.incrementCount(current);
     }
   }
 
-  incrementCount(trigger: string) {
+  incrementCount(trigger: string): void {
     if (trigger === 'Reset') {
       this.start = 0;
       this.pause = 0;

@@ -14,35 +14,38 @@ export class BComponentComponent implements OnInit {
 
   timerValue: number;
   clickCount: number = 1;
+  internalTimerValue: number;
 
   constructor(private renderer: Renderer2, private shared: SharedService) {
     this.timerValue = 0;
+    this.internalTimerValue = this.timerValue;
   }
 
   ngOnInit(): void {
     this.shared.currentCountValue.subscribe((res) => {
-      console.log('current count subscribed in b component');
-      this.timerValue = res;
+      // console.log('current count subscribed in b component');
+      this.internalTimerValue = res;
     });
   }
 
   startAndStop(): void {
 
     if (this.clickCount === 1) {
-      console.log('countdown value emitted in b component');
-      this.shared.countDownValue.next(this.timerValue);
+      // console.log('countdown value emitted in b component');
+      this.internalTimerValue = this.timerValue;
+      this.shared.countDownValue.next(this.internalTimerValue);
     }
 
     if (this.clickCount % 2 === 0) {
-      const message = `Paused at ${this.timerValue}`;
+      const message = `Paused at ${this.internalTimerValue}`;
       this.appendElement(message);
 
-      console.log('btnTrigger value Stop emitted in b component');
+      // console.log('btnTrigger value Stop emitted in b component');
       this.shared.btnTrigger.next('Stop');
 
     }
     else if (this.clickCount % 2 !== 0) {
-      console.log('btnTrigger value Start emitted in b component');
+      // console.log('btnTrigger value Start emitted in b component');
       this.shared.btnTrigger.next('Start');
     }
     this.clickCount++;
@@ -51,6 +54,7 @@ export class BComponentComponent implements OnInit {
   reset() {
     this.clickCount = 1;
     this.timerValue = 0;
+    this.internalTimerValue = 0;
     this.shared.btnTrigger.next('Reset');
 
     const div = document.getElementById('pause');

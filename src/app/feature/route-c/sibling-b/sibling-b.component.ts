@@ -17,9 +17,11 @@ export class SiblingBComponent implements OnInit {
 
   timerValue: number;
   clickCount: number = 1;
+  internalTimerValue: number;
 
   constructor(private renderer: Renderer2) {
     this.timerValue = 0;
+    this.internalTimerValue = this.timerValue;
   }
 
   ngOnInit(): void {
@@ -29,29 +31,30 @@ export class SiblingBComponent implements OnInit {
     const current = changes['currentCounterStop'].currentValue;
 
     if (current !== undefined) {
-      this.timerValue = current;
+      this.internalTimerValue = current;
     }
   }
 
   startAndStop(): void {
 
     if (this.clickCount === 1) {
-      this.countDown.emit(this.timerValue);
+      this.internalTimerValue = this.timerValue;
+      this.countDown.emit(this.internalTimerValue);
     }
 
     if (this.clickCount % 2 === 0) {
       // console.log(`Stop ${this.clickCount}`);
       // Stop
-      const message = `Paused at ${this.timerValue}`;
+      const message = `Paused at ${this.internalTimerValue}`;
       this.appendElement(message);
-
       this.buttonTriggered.emit('Stop');
+      this.countDown.emit(this.internalTimerValue);
 
     }
     else if (this.clickCount % 2 !== 0) {
       // console.log(`Start ${this.clickCount}`);
       // Start
-      this.countDown.emit(this.timerValue);
+      this.countDown.emit(this.internalTimerValue);
       this.buttonTriggered.emit('Start');
     }
     this.clickCount++;
@@ -60,6 +63,7 @@ export class SiblingBComponent implements OnInit {
   reset() {
     this.clickCount = 1;
     this.timerValue = 0;
+    this.internalTimerValue = 0;
 
     const div = document.getElementById('pause');
     while (div?.firstChild) {

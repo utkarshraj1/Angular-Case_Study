@@ -36,7 +36,7 @@ export class SiblingAComponent implements OnInit {
     this.timeInterval = interval(1000).subscribe((res: any) => {
       // console.log(res);
       if (this.timerValue <= 0 || this.btnTrigger !== 'Start') {
-        console.log('timer interval and stopped/resetted');
+        // console.log('timer interval and stopped/resetted');
         // this.btnTrigger = '';
         this.cancelTimer();
       }
@@ -49,7 +49,7 @@ export class SiblingAComponent implements OnInit {
 
   cancelTimer(): void {
     this.timeInterval.unsubscribe();
-    console.log('Unsubscribing timerinterval');
+    // console.log('Unsubscribing timerinterval');
     if (this.btnTrigger === 'Reset') { this.timerValue = 0; }
   }
 
