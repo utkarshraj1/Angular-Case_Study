@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Righteous&display=swap');
 
 .container {
     display: flex;
@@ -9,37 +9,42 @@
 }
 
 .dimension1 {
-    height: 400px;
+    height: 25rem;
 }
 
 .dimension2 {
-    height: 300px; 
-    width: 800px;
+    height: 18.75rem; 
+    width: 50rem;
 }
 
 .dimension3 {
-    height: 250px; 
-    width: 750px;
+    height: 15.625rem; 
+    width: 46.875rem;
 }
 
 .dimension4 {
-    height: 200px;
-    width: 700px;
+    height: 12.5rem;
+    width: 43.75rem;
 }
 
 .dimension5 {
-    height: 150px; 
-    width: 650px;
+    height: 9.375rem; 
+    width: 40.625rem;
 }
 
 .dimension6 {
-    height: 100px; 
-    width: 600px;
+    height: 6.25rem; 
+    width: 37.5rem;
 }
 
 .dimension7 {
-    height: 50px;
-    width: 550px;
+    height: 3.125rem;
+    width: 34.375rem;
+}
+
+.rotate {
+    z-index: 5;
+    font-family: 'Righteous';
 }
 
 @keyframes spin {
@@ -53,4 +58,112 @@
 
 .rotate:hover {
     animation: spin 3s infinite;
+}
+
+@media only screen and (max-width: 1000px) {
+    
+    .dimension2 {
+        width: 47rem;
+    }
+    
+    .dimension3 {
+        width: 43.875rem;
+    }
+    
+    .dimension4 {
+        width: 40.75rem;
+    }
+    
+    .dimension5 {
+        width: 37.625rem;
+    }
+    
+    .dimension6 {
+        width: 34.5rem;
+    }
+    
+    .dimension7 {
+        width: 31.375rem;
+    }
+}
+
+@media only screen and (max-width: 773px) {
+    
+    .dimension2 {
+        width: 42rem;
+    }
+    
+    .dimension3 {
+        width: 38.875rem;
+    }
+    
+    .dimension4 {
+        width: 35.75rem;
+    }
+    
+    .dimension5 {
+        width: 32.625rem;
+    }
+    
+    .dimension6 {
+        width: 29.5rem;
+    }
+    
+    .dimension7 {
+        width: 27.375rem;
+    }
+}
+
+@media only screen and (max-width: 693px) {
+    
+    .dimension2 {
+        width: 37rem;
+    }
+    
+    .dimension3 {
+        width: 33.875rem;
+    }
+    
+    .dimension4 {
+        width: 30.75rem;
+    }
+    
+    .dimension5 {
+        width: 27.625rem;
+    }
+    
+    .dimension6 {
+        width: 24.5rem;
+    }
+    
+    .dimension7 {
+        width: 22.375rem;
+    }
+}
+
+@media only screen and (max-width: 598px) {
+    
+    .dimension2 {
+        width: 32rem;
+    }
+    
+    .dimension3 {
+        width: 28.875rem;
+    }
+    
+    .dimension4 {
+        width: 25.75rem;
+    }
+    
+    .dimension5 {
+        width: 22.625rem;
+    }
+    
+    .dimension6 {
+        width: 19.5rem;
+    }
+    
+    .dimension7 {
+        width: 17.375rem;
+    }
 }

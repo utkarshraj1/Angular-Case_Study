@@ -63,7 +63,7 @@ a {
     display: none;
 }
 
-@media only screen and (max-width: 654px) {
+@media only screen and (max-width: 706px) {
     .nav-bar {
         flex-direction: column;
         align-items: flex-start;
