@@ -12,6 +12,9 @@
     margin: 5px;
     width: 200px;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn {
@@ -19,6 +22,8 @@
     padding: 20px;
     background: #909497;
     color: #FBFCFC;
+    height: 70px;
+    border-radius: 3px;
 }
 
 .btn:hover {

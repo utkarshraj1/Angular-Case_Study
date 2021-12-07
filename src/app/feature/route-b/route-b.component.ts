@@ -43,6 +43,6 @@ export class RouteBComponent implements OnInit, AfterViewInit {
   sortProducts(): void {
     this.productData.reverse();
     // console.log(this.selectedOrder);
-    console.log(this.productData);
+    // console.log(this.productData);
   }
 }
