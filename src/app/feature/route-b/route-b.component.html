@@ -7,9 +7,9 @@
 
     <div class="btn-box">
         <!-- <div class="btn" [ngStyle]="{'left.px': isGrid ? '0' : '100'}"></div> -->
-        <button style="border-radius: 30px 0px 0px 30px;" [class.clicked]="isGrid" class="btn-toggle"
+        <button style="border-radius: 20px 0px 0px 20px;" [class.clicked]="isGrid" class="btn-toggle"
             (click)="isGrid=true">Grid</button>
-        <button style="border-radius: 0px 30px 30px 0px;" [class.clicked]="!isGrid" class="btn-toggle"
+        <button style="border-radius: 0px 20px 20px 0px;" [class.clicked]="!isGrid" class="btn-toggle"
             (click)="isGrid=false">List</button>
     </div>
 
@@ -30,7 +30,7 @@
 }">
     <div class="card" *ngFor="let data of productData">
         <div>
-            <img [src]="data.image" width="225px" height="100px">
+            <img [src]="data.image" class="image">
             <h4>
                 {{data.title}}
             </h4>

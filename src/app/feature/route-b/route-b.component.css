@@ -6,15 +6,14 @@
     /* background: #000; */
 }
 .btn-box {
-    width: 200px;
     display: flex;
     margin-right: 20px;
     position: relative;
     background: #FFF;
+    height: 20px;
 }
 
 .btn-toggle {
-    padding: 10px 40px;
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -22,6 +21,7 @@
     position: relative;
     text-align: center;
     background: #D6DBDF;
+    width: 70px;
 }
 
 /* .btn {
@@ -61,12 +61,17 @@
     align-items: center;
 }
 
+.image {
+    width: 225px; 
+    height: 100px;
+}
+
 .grid-view {
-    grid-template-columns: 280px 280px 280px 280px;
+    grid-template-columns: 17.5rem 17.5rem 17.5rem 17.5rem;
 }
 
 .list-view {
-    grid-template-columns: 560px 560px;
+    grid-template-columns: 35rem 35rem;
 }
 
 select {
@@ -95,4 +100,49 @@ select {
     justify-content: center;
     align-items: center;
     height: 200px;
+}
+
+@media only screen and (max-width: 1210px) {
+    .grid-view {
+        grid-template-columns: 13.5rem 13.5rem 13.5rem 13.5rem;
+    }
+    .list-view {
+        grid-template-columns: 31rem 31rem;
+    }
+    .body {
+        margin-top: 10px;
+        display: grid;
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+    .image {
+        width: 175px; 
+    }
+}
+
+@media only screen and (max-width: 1017px) {
+    .btn-box {
+        display: none;
+    }
+    .grid-view, .list-view {
+        grid-template-columns: 24rem 24rem;
+    }
+}
+
+@media only screen and (max-width: 788px) {
+    .image {
+        width: 125px;
+    }
+    .grid-view, .list-view {
+        grid-template-columns: 20rem 20rem;
+    }
+}
+
+@media only screen and (max-width: 687px) {
+    .image {
+        width: 105px;
+    }
+    .grid-view, .list-view {
+        grid-template-columns: 15rem 15rem;
+    }
 }
