@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { IStudent } from 'src/assets/model/student';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +24,7 @@ export class SharedService {
     return hr + ':' + min + ':' + sec + ' ' + suffix;
   }
 
-  getData(url: string): Observable<IStudent[]> {
-    return this.http.get<IStudent[]>(url);
+  getData(url: string): Observable<any> {
+    return this.http.get<any>(url);
   }
 }
