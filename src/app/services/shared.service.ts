@@ -12,8 +12,6 @@ export class SharedService {
   countDownValue = new Subject<any>();
   currentCountValue = new Subject<any>();
 
-  private marksUrl: string = '../../assets/config/marks.json';
-
   constructor(private http: HttpClient) { }
 
   getTime(): string {
@@ -27,7 +25,7 @@ export class SharedService {
     return hr + ':' + min + ':' + sec + ' ' + suffix;
   }
 
-  getData(): Observable<IStudent[]> {
-    return this.http.get<IStudent[]>(this.marksUrl);
+  getData(url: string): Observable<IStudent[]> {
+    return this.http.get<IStudent[]>(url);
   }
 }

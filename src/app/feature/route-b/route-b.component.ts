@@ -1,35 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-route-b',
   templateUrl: './route-b.component.html',
   styleUrls: ['./route-b.component.css']
 })
-export class RouteBComponent implements OnInit {
+export class RouteBComponent implements OnInit, AfterViewInit {
 
-  productPrice: Array<number> = [
-    3902, 1263, 7924, 2013, 3519, 2617, 3707, 1735, 5026, 2826, 6590, 2373, 5563,
-    2978, 2673, 7313, 3113, 5893, 7947, 5599,
-    2889, 1398, 1384, 2161, 4491, 6669, 2692, 7443,
-    1365, 4444, 2657, 4182, 4344, 3670, 5177, 3132, 6695, 4782, 5775, 6315
-  ];
+  productData: Array<any>;
   isGrid: boolean;
   selectedOrder: string;
-  productPriceShow: any = [];
+  subsHolder!: Subscription;
 
-  constructor() {
+  private productUrl: string = 'https://fakestoreapi.com/products?limit=20'
+
+  constructor(private shared: SharedService) {
     this.selectedOrder = 'Price - Low to High';
     this.isGrid = true;
+    this.productData = [];
   }
 
   ngOnInit(): void {
-    this.sortPrices();
+    // this.getProductData();
   }
 
-  sortPrices() {
-    this.productPriceShow = [];
-    this.selectedOrder === 'Price - Low to High' ? this.productPriceShow = this.productPrice.sort()
-      : this.productPriceShow = this.productPrice.sort().reverse();
+  ngAfterViewInit(): void {
+    this.getProductData();
   }
 
+  getProductData(): void {
+    this.subsHolder = this.shared.getData(this.productUrl).subscribe((res) => {
+      // console.log(res);
+      this.productData = JSON.parse(JSON.stringify(res));
+      this.productData.sort((a, b) => {
+        return a['price'] > b['price'] ? 1 : (a['price'] < b['price']) ? -1 : 0;
+      });
+    });
+  }
+
+  sortProducts(): void {
+    this.productData.reverse();
+    // console.log(this.selectedOrder);
+    console.log(this.productData);
+  }
 }

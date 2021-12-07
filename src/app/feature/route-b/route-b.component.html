@@ -13,21 +13,35 @@
             (click)="isGrid=false">List</button>
     </div>
 
-    <select [(ngModel)]="selectedOrder" (change)="sortPrices()">
+    <select [(ngModel)]="selectedOrder" (change)="sortProducts()">
         <option>Price - Low to High</option>
         <option>Price - High to Low</option>
     </select>
     <!-- <p>{{selectedOrder}}</p> -->
 </div>
+
+<div class="loader" *ngIf="productData.length===0">
+    <h4>Be patient, the data will be loaded soon....</h4>
+</div>
+
 <div class="body" [ngClass]="{
     'grid-view':isGrid,
     'list-view':!isGrid
 }">
-    <div class="card" *ngFor="let price of productPriceShow">
-        <img src="../../../assets/images/product.jpg" alt="product image" width="250px" height="100px">
-        <br>
-        <br>
-        <strong>Price: </strong>
-        <span>{{price}}</span>
+    <div class="card" *ngFor="let data of productData">
+        <div>
+            <img [src]="data.image" width="225px" height="100px">
+            <h4>
+                {{data.title}}
+            </h4>
+            <p><strong>Price(USD): </strong>{{data.price}}</p>
+            <div class="tooltiphover">
+                <p><strong>Description: </strong>{{data.description | shorten}}</p>
+                <p class="tooltipdata">{{data.description}}</p>
+            </div>
+            <p><strong>Category: </strong>{{data.category}}</p>
+            <p>Rated <strong>{{data.rating["rate"]}}</strong> by <strong>{{data.rating['count']}}</strong> people.</p>
+        </div>
     </div>
+
 </div>

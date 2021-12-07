@@ -17,10 +17,12 @@ export class RouteEComponent implements OnInit {
   clickCount: number = 0;
   sortedStudentMarks!: any[];
 
+  private marksUrl: string = '../../assets/config/marks.json';
+
   constructor(private shared: SharedService) { }
 
   ngOnInit(): void {
-    this.subscribeData = this.shared.getData().subscribe((res) => {
+    this.subscribeData = this.shared.getData(this.marksUrl).subscribe((res) => {
       // console.log('Subscription started');
       // console.log(res);
       this.studentMarks = JSON.parse(JSON.stringify(res));
