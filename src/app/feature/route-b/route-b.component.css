@@ -54,7 +54,7 @@
 .card {
     width: auto;
     height: 400px;
-    border: 1px solid black;
+    border: groove;
     padding: 10px;
     display: flex;
     justify-content: center;
