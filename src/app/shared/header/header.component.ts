@@ -17,4 +17,8 @@ export class HeaderComponent implements OnInit {
     header?.classList.toggle('sticky-class', window.scrollY > 0);
   }
 
+  openHamburger(): void {
+    let nav = document.querySelector('.nav-list');
+    nav?.classList.toggle('v-class');
+  }
 }

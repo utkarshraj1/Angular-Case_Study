@@ -1,5 +1,10 @@
-<header class="nav-bar">
-    <ul class="nav-list">
+<nav class="nav-bar">
+    <div class="hamburger" (click)="openHamburger()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <ul class="nav-list v-class">
         <li class="nav-item"><a routerLink="route-a" routerLinkActive="active">Route A</a></li>
         <li class="nav-item"><a routerLink="route-b" routerLinkActive="active">Route B</a></li>
         <li class="nav-item"><a routerLink="route-c" routerLinkActive="active">Route C</a></li>
@@ -7,4 +12,4 @@
         <li class="nav-item"><a routerLink="route-e" routerLinkActive="active">Route E</a></li>
         <li class="nav-item"><a routerLink="route-f" routerLinkActive="active">Route F</a></li>
     </ul>
-</header>
+</nav>
