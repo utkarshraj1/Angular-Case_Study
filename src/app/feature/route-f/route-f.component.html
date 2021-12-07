@@ -1,2 +1,6 @@
 <p>Scroll to create divs dynamically!</p>
-<div #container class="container"></div>
+<div #container class="container">
+    <div *ngFor="let num of staticDivArr">
+        <button class="btn" (click)="alertButton(num)">Button {{num}}</button>
+    </div>
+</div>
