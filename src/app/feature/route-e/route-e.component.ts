@@ -47,7 +47,7 @@ export class RouteEComponent implements OnInit {
       this.sortedStudentMarks = this.sortBy(this.studentMarks, key);
     }
     else if (this.clickCount === 2) {
-      this.sortedStudentMarks = this.reverseSortBy(this.studentMarks, key);
+      this.sortedStudentMarks = this.sortBy(this.studentMarks, key).reverse();
     }
     else if (this.clickCount === 3) {
       this.sortedStudentMarks = this.studentMarks;
@@ -59,12 +59,6 @@ export class RouteEComponent implements OnInit {
   sortBy = function (arr: any, p: any) {
     return arr.slice(0).sort(function (a: any, b: any) {
       return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
-    });
-  }
-
-  reverseSortBy = function (arr: any, p: any) {
-    return arr.slice(0).sort(function (a: any, b: any) {
-      return (a[p] > b[p]) ? -1 : (a[p] < b[p]) ? 1 : 0;
     });
   }
 }

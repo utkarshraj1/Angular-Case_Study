@@ -77,7 +77,7 @@ select {
     position: absolute;
     visibility: hidden;
     width: 300px;
-    background-color: black;
+    background-color: #8C8C8C;
     color: #fff;
     text-align: center;
     padding: 5px;
