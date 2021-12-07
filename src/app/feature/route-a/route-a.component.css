@@ -1,3 +1,5 @@
+
+
 .container {
     display: flex;
     justify-content: center;
@@ -33,4 +35,22 @@
 .dimension6 {
     height: 100px; 
     width: 600px;
+}
+
+.dimension7 {
+    height: 50px;
+    width: 550px;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.rotate:hover {
+    animation: spin 3s infinite;
 }
