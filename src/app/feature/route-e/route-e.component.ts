@@ -77,7 +77,7 @@ export class RouteEComponent implements OnInit {
   assignSortingToKey(key: string) {
     this.sortOrderArr.forEach(o => {
       if (o.key === key && o.sorting !== 3) { o.sorting++; }
-      else { o.sorting = 1; }
+      else if (o.key === key && o.sorting === 3) { o.sorting = 1; }
     });
   }
 }
